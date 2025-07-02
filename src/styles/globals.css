@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-main: #f3f4f6;
+    --text-main: #18181b;
+    --icon-color: #18181b;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+.dark {
+    --bg-main: #18181b;
+    --text-main: #f3f4f6;
+    --icon-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+a {
+    color: #2563eb; /* Tailwind text-blue-600 */
+    transition: color 0.2s;
+}
+.dark a {
+    color: #60a5fa; /* Tailwind text-blue-400 */
+    transition: color 0.2s;
+}
+a:hover {
+    color: #1e40af; /* Tailwind text-blue-800 */
+}
+.dark a:hover {
+    color: #bfdbfe; /* Tailwind text-blue-200 */
+}
+
+/* Style Mario pour le nom */
+.mario-title {
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    text-shadow:
+        2px 2px 0 #fff200,
+        4px 4px 0 #0000ff,
+        6px 6px 0 #000;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--text-main); /* Ajouté : fallback si le gradient ne s'applique pas */
+}
+
+.dark .mario-title {
+    text-shadow:
+        2px 2px 0 #fff200,
+        4px 4px 0 #0000ff,
+        6px 6px 0 #fff;
+    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--text-main); /* Ajouté */
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid #ff0000;
+    white-space: nowrap;
+    animation: typing 2.5s steps(20, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #ff0000; }
+}
+
+/* Mario sprite animation */
+.mario-sprite {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    transition: transform 0.5s;
+}
+
+.mario-jump {
+    animation: mario-jump 1s cubic-bezier(.5,-0.5,.5,1.5) forwards;
+}
+
+@keyframes mario-jump {
+    0% { transform: translateY(0) }
+    30% { transform: translateY(-80px) }
+    60% { transform: translateY(-80px) }
+    100% { transform: translateY(0) }
+}
+
+.mario-run {
+    animation: mario-run 2s linear forwards;
+}
+
+@keyframes mario-run {
+    from { left: 0; }
+    to { left: 90vw; }
+}
