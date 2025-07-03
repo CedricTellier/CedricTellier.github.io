@@ -58,12 +58,10 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
+                    className="navbar-icon"
                     style={{
                         opacity: iconsVisible[idx] ? 1 : 0,
-                        transform: iconsVisible[idx]
-                            ? 'translateY(0) scale(1)'
-                            : 'translateY(-80px) scale(0.5)',
-                        transition: 'opacity 0.4s, transform 0.5s cubic-bezier(.22,1.5,.36,1)',
+                        transition: 'opacity 0.4s, filter 0.18s',
                         transitionDelay: `${item.delay}s`,
                         fontSize: 88,
                         color: 'var(--icon-color, #fff)',
@@ -88,5 +86,6 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
         </div>
     );
 };
+
 
 export default Navbar;

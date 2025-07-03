@@ -83,33 +83,35 @@ a:hover {
     50% { border-color: #ff0000; }
 }
 
-/* Mario sprite animation */
-.mario-sprite {
-    width: 48px;
-    height: 48px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 10;
-    transition: transform 0.5s;
+@keyframes icon-bounce {
+    0% { transform: translateY(-80px) scale(0.5);}
+    60% { transform: translateY(10px) scale(1.15);}
+    80% { transform: translateY(-5px) scale(0.95);}
+    100% { transform: translateY(0) scale(1);}
+}
+.navbar-icon {
+    display: inline-block;
+    transform: scale(1) translateY(0);
+    transition: filter 0.18s transform 0.32s cubic-bezier(.22,1.5,.36,1);
+    will-change: transform, filter;
+}
+.navbar-icon:hover {
+    animation: navbar-mac-dock 0.38s cubic-bezier(.22,1.5,.36,1) forwards;
+    z-index: 101;
+    filter: drop-shadow(0 16px 48px #222b);
 }
 
-.mario-jump {
-    animation: mario-jump 1s cubic-bezier(.5,-0.5,.5,1.5) forwards;
-}
-
-@keyframes mario-jump {
-    0% { transform: translateY(0) }
-    30% { transform: translateY(-80px) }
-    60% { transform: translateY(-80px) }
-    100% { transform: translateY(0) }
-}
-
-.mario-run {
-    animation: mario-run 2s linear forwards;
-}
-
-@keyframes mario-run {
-    from { left: 0; }
-    to { left: 90vw; }
+@keyframes navbar-mac-dock {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    60% {
+        transform: scale(1.7) translateY(-22px);
+    }
+    80% {
+        transform: scale(2.8) translateY(-32px);
+    }
+    100% {
+        transform: scale(3) translateY(-30px);
+    }
 }
