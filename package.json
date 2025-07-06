@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "next build && npx gh-pages -d out"
+    "deploy": "next build && touch out/.nojekyll && npx gh-pages -d out"
   },
   "dependencies": {
     "autoprefixer": "latest",

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Active le mode static export
+  output: 'export',
+  basePath: '',         // forcé à root
+  assetPrefix: './',    // chemins relatifs
 };
 
 module.exports = nextConfig;
