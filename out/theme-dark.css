@@ -1,0 +1,13 @@
+:root {
+    --bg-main: #18181b;
+    --text-main: #f3f4f6;
+    --icon-color: #fff;
+    --navbar-bg: #23232b;
+    --navbar-shadow: 0 2px 16px #0008;
+    --link: #60a5fa;
+    --link-hover: #93c5fd;
+}
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
