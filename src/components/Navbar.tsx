@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
+import ThemeSwitch from '../components/ThemeSwitch';
 
 const ICONS = [
     {
@@ -41,40 +42,64 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
             style={{
                 position: 'fixed',
                 top: 24,
-                left: '50%',
-                transform: 'translateX(-50%)',
+                left: 0,
+                right: 0,
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                gap: 64,
+                justifyContent: 'space-between',
                 zIndex: 100,
                 pointerEvents: 'auto',
                 height: 100,
-                // width/maxWidth/padding supprimés pour un centrage parfait
             }}
         >
-            {ICONS.map((item, idx) => (
-                <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.label}
-                    className="navbar-icon"
-                    style={{
-                        opacity: iconsVisible[idx] ? 1 : 0,
-                        transition: 'opacity 0.4s, filter 0.18s',
-                        transitionDelay: `${item.delay}s`,
-                        fontSize: 'clamp(36px, 10vw, 88px)',
-                        color: 'var(--icon-color, #fff)',
-                        margin: '0 32px',
-                        filter: iconsVisible[idx] ? 'drop-shadow(0 6px 16px #2228)' : 'none',
-                        animation: iconsVisible[idx] ? 'icon-bounce 0.7s cubic-bezier(.22,1.5,.36,1)' : 'none'
-                    }}
-                >
-                    {item.icon}
-                </a>
-            ))}
+            {/* Espace réservé à gauche pour équilibrer le ThemeSwitch à droite */}
+            <div style={{ minWidth: 104 /* largeur similaire au ThemeSwitch + margin */ }} />
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 64,
+                    flex: '0 1 auto',
+                }}
+            >
+                {ICONS.map((item, idx) => (
+                    <a
+                        key={item.href}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={item.label}
+                        className="navbar-icon"
+                        style={{
+                            opacity: iconsVisible[idx] ? 1 : 0,
+                            transition: 'opacity 0.4s, filter 0.18s',
+                            transitionDelay: `${item.delay}s`,
+                            fontSize: 'clamp(36px, 10vw, 88px)',
+                            color: 'var(--icon-color, #fff)',
+                            margin: '0 32px',
+                            filter: iconsVisible[idx] ? 'drop-shadow(0 6px 16px #2228)' : 'none',
+                            animation: iconsVisible[idx] ? 'icon-bounce 0.7s cubic-bezier(.22,1.5,.36,1)' : 'none'
+                        }}
+                    >
+                        {item.icon}
+                    </a>
+                ))}
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    minWidth: 80,
+                    marginLeft: 24,
+                    height: '100%',
+                }}
+            >
+                <ThemeSwitch />
+            </div>
             <style>
                 {`
                 @keyframes icon-bounce {
@@ -90,3 +115,4 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
 };
 
 export default Navbar;
+// Pas de changement nécessaire ici pour appliquer le mode dark par défaut

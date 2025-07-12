@@ -4,9 +4,9 @@
 @tailwind utilities;
 
 :root {
-    --bg-main: #f3f4f6;
-    --text-main: #18181b;
-    --icon-color: #18181b;
+    --bg-main: #18181b;
+    --text-main: #f3f4f6;
+    --icon-color: #fff;
 }
 
 body {

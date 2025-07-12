@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import ThemeSwitch from '../components/ThemeSwitch';
 import Footer from '../components/Footer';
 import TypeWriter from '../components/Typewriter';
 import { useState } from 'react';
@@ -23,7 +22,6 @@ const Home: React.FC = () => {
                 padding: '0 32px',
             }}
         >
-            <ThemeSwitch />
             {showNavbar && <Navbar show={showNavbar} />}
             <TypeWriter
                 onNameDone={() => setShowNavbar(true)}

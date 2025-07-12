@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 const THEME_LINK_ID = 'theme-css-link';
 
 const ThemeSwitch: React.FC = () => {
-    // Par défaut, dark = true
-    const [dark, setDark] = useState(true);
+    // Met le mode sombre par défaut
+    const [dark, setDark] = useState(() => true);
 
     useEffect(() => {
         document.body.style.transition = 'background 0.8s, color 0.8s, filter 0.8s';
