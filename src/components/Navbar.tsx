@@ -42,26 +42,26 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
             style={{
                 position: 'fixed',
                 top: 24,
-                left: 0,
-                right: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 zIndex: 100,
                 pointerEvents: 'auto',
                 height: 100,
             }}
         >
-            {/* Espace réservé à gauche pour équilibrer le ThemeSwitch à droite */}
-            <div style={{ minWidth: 104 /* largeur similaire au ThemeSwitch + margin */ }} />
+            {/* Suppression de l'espace réservé à gauche */}
+            {/* Centrage de tous les éléments */}
             <div
                 style={{
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    flex: '0 1 auto',
+                    gap: 32,
                 }}
             >
                 {ICONS.map((item, idx) => (
@@ -87,18 +87,8 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                     </a>
                 ))}
             </div>
-            <div
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    minWidth: 80,
-                    marginLeft: 24,
-                    height: '100%',
-                }}
-            >
-                <ThemeSwitch />
-            </div>
+            <ThemeSwitch />
+
             <style>
                 {`
                 @keyframes icon-bounce {

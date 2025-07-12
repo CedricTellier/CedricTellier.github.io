@@ -35,14 +35,10 @@ const ThemeSwitch: React.FC = () => {
         link.href = dark ? '/theme-dark.css' : '/theme-light.css';
     }, [dark]);
 
+    // Suppression du positionnement fixed et de la classe CSS
     return (
         <div
-            className="theme-switch-fixed"
             style={{
-                position: 'fixed',
-                top: 40,
-                right: 32,
-                zIndex: 200,
                 width: 72,
                 height: 40,
                 display: 'flex',
@@ -137,5 +133,6 @@ const ThemeSwitch: React.FC = () => {
         </div>
     );
 };
+
 
 export default ThemeSwitch;

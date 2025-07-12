@@ -40,32 +40,6 @@ a:hover {
     color: #bfdbfe; /* Tailwind text-blue-200 */
 }
 
-/* Style Mario pour le nom */
-.mario-title {
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #000;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté : fallback si le gradient ne s'applique pas */
-}
-
-.dark .mario-title {
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #fff;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté */
-}
-
 .typewriter {
     overflow: hidden;
     border-right: .15em solid #ff0000;
