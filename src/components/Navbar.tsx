@@ -61,7 +61,6 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 64,
                     flex: '0 1 auto',
                 }}
             >
