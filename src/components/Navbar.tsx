@@ -42,8 +42,8 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
             style={{
                 position: 'fixed',
                 top: 24,
-                left: '50%',
-                transform: 'translateX(-50%)',
+                left: 0,
+                right: 0,
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -53,10 +53,9 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                 height: 100,
             }}
         >
-            {/* Suppression de l'espace réservé à gauche */}
-            {/* Centrage de tous les éléments */}
             <div
                 style={{
+                    flex: 1,
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -87,8 +86,19 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                     </a>
                 ))}
             </div>
-            <ThemeSwitch />
-
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    minWidth: 80,
+                    marginLeft: 24,
+                    height: '100%',
+                    paddingRight: 16, // Ajoute un espace à droite du bouton
+                }}
+            >
+                <ThemeSwitch />
+            </div>
             <style>
                 {`
                 @keyframes icon-bounce {

@@ -42,7 +42,7 @@ const ThemeSwitch: React.FC = () => {
                 width: 72,
                 height: 40,
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'right',
                 justifyContent: 'flex-end',
                 pointerEvents: 'auto',
                 userSelect: 'none',
