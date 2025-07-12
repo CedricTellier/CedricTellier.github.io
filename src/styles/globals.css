@@ -170,6 +170,22 @@ footer {
     }
 }
 
+/* Footer toujours centré sur deux lignes */
+.footer-responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px;
+    text-align: center !important;
+}
+@media (max-width: 600px) {
+    .footer-responsive {
+        font-size: 11px;
+        padding: 12px 0 8px 0 !important;
+    }
+}
+
 /* Responsive ThemeSwitch */
 @media (max-width: 600px) {
     .theme-switch-fixed {
@@ -195,5 +211,8 @@ footer {
         padding: 0 8vw;
         width: 100vw;
         box-sizing: border-box;
+    }
+    .navbar-responsive > div:nth-child(2) {
+        gap: 20px !important; /* Réduit l'écart entre les icônes */
     }
 }
