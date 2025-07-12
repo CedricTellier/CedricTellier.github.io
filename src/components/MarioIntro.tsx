@@ -9,7 +9,7 @@ const MarioIntro: React.FC = () => {
 
     return (
         <div
-            className="fixed inset-0 flex flex-col items-center justify-center"
+            className="fixed inset-0 flex flex-col items-center justify-center mario-intro-container"
             style={{
                 width: '100vw',
                 height: '100vh',
@@ -19,6 +19,7 @@ const MarioIntro: React.FC = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
+                padding: '0 32px',
             }}
         >
             <ThemeSwitch />

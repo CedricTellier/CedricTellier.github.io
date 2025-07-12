@@ -3,7 +3,8 @@ import React from 'react';
 const Footer: React.FC = () => (
     <footer
         style={{
-            width: '100%',
+            width: '100vw',
+            maxWidth: '100vw',
             padding: '24px 0 16px 0',
             textAlign: 'center',
             fontSize: 14,

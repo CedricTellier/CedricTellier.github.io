@@ -37,6 +37,7 @@ const ThemeSwitch: React.FC = () => {
 
     return (
         <div
+            className="theme-switch-fixed"
             style={{
                 position: 'fixed',
                 top: 24,
@@ -63,15 +64,15 @@ const ThemeSwitch: React.FC = () => {
                     padding: 0,
                     margin: 0,
                     cursor: 'pointer',
-                    width: 72,
-                    height: 40,
+                    width: '100%',
+                    height: '100%',
                     outline: 'none',
                 }}
             >
                 <div
                     style={{
-                        width: 72,
-                        height: 40,
+                        width: '100%',
+                        height: '100%',
                         borderRadius: 20,
                         background: dark
                             ? 'linear-gradient(90deg, #23232b 60%, #444 100%)'
@@ -110,9 +111,9 @@ const ThemeSwitch: React.FC = () => {
                         style={{
                             position: 'absolute',
                             top: 4,
-                            left: dark ? 36 : 4,
-                            width: 32,
-                            height: 32,
+                            left: dark ? '50%' : 4,
+                            width: 'calc(50% - 4px)',
+                            height: 'calc(100% - 8px)',
                             borderRadius: 16,
                             background: dark ? '#23232b' : '#fffbe6',
                             boxShadow: dark

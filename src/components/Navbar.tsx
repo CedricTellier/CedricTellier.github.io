@@ -37,6 +37,7 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
 
     return (
         <div
+            className="navbar-responsive"
             style={{
                 position: 'fixed',
                 top: 24,
@@ -49,6 +50,7 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                 zIndex: 100,
                 pointerEvents: 'auto',
                 height: 100,
+                // width/maxWidth/padding supprimés pour un centrage parfait
             }}
         >
             {ICONS.map((item, idx) => (
@@ -63,7 +65,7 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
                         opacity: iconsVisible[idx] ? 1 : 0,
                         transition: 'opacity 0.4s, filter 0.18s',
                         transitionDelay: `${item.delay}s`,
-                        fontSize: 88,
+                        fontSize: 'clamp(36px, 10vw, 88px)',
                         color: 'var(--icon-color, #fff)',
                         margin: '0 32px',
                         filter: iconsVisible[idx] ? 'drop-shadow(0 6px 16px #2228)' : 'none',
@@ -86,6 +88,5 @@ const Navbar: React.FC<{ show: boolean }> = ({ show }) => {
         </div>
     );
 };
-
 
 export default Navbar;
