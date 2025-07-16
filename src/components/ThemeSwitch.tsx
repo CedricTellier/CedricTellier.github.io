@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 const THEME_LINK_ID = 'theme-css-link';
 
 const ThemeSwitch: React.FC = () => {
-    // Par défaut, dark = true
-    const [dark, setDark] = useState(true);
+    // Met le mode sombre par défaut
+    const [dark, setDark] = useState(() => true);
 
     useEffect(() => {
         document.body.style.transition = 'background 0.8s, color 0.8s, filter 0.8s';
@@ -35,21 +35,17 @@ const ThemeSwitch: React.FC = () => {
         link.href = dark ? '/theme-dark.css' : '/theme-light.css';
     }, [dark]);
 
+    // Suppression du positionnement fixed et de la classe CSS
     return (
         <div
             style={{
-                position: 'fixed',
-                top: 24,
-                right: 32,
-                zIndex: 200,
                 width: 72,
                 height: 40,
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: 'right',
                 justifyContent: 'flex-end',
                 pointerEvents: 'auto',
                 userSelect: 'none',
-                // Empêche le shrink/grow lors du switch
                 minWidth: 72,
                 minHeight: 40,
             }}
@@ -137,5 +133,6 @@ const ThemeSwitch: React.FC = () => {
         </div>
     );
 };
+
 
 export default ThemeSwitch;

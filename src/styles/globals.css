@@ -4,9 +4,9 @@
 @tailwind utilities;
 
 :root {
-    --bg-main: #f3f4f6;
-    --text-main: #18181b;
-    --icon-color: #18181b;
+    --bg-main: #18181b;
+    --text-main: #f3f4f6;
+    --icon-color: #fff;
 }
 
 body {
@@ -40,32 +40,6 @@ a:hover {
     color: #bfdbfe; /* Tailwind text-blue-200 */
 }
 
-/* Style Mario pour le nom */
-.mario-title {
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #000;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté : fallback si le gradient ne s'applique pas */
-}
-
-.dark .mario-title {
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #fff;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté */
-}
-
 .typewriter {
     overflow: hidden;
     border-right: .15em solid #ff0000;
@@ -94,6 +68,7 @@ a:hover {
     transform: scale(1) translateY(0);
     transition: filter 0.18s transform 0.32s cubic-bezier(.22,1.5,.36,1);
     will-change: transform, filter;
+    font-size: 88px;
 }
 .navbar-icon:hover {
     animation: navbar-mac-dock 0.38s cubic-bezier(.22,1.5,.36,1) forwards;
@@ -113,5 +88,105 @@ a:hover {
     }
     100% {
         transform: scale(3) translateY(-30px);
+    }
+}
+
+/* Responsive Mario Title & Typewriter */
+.mario-title {
+    font-size: 2.5rem;
+}
+@media (max-width: 900px) {
+    .mario-title {
+        font-size: 1.7rem;
+    }
+}
+@media (max-width: 600px) {
+    .mario-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+}
+.typewriter {
+    white-space: nowrap;
+}
+@media (max-width: 600px) {
+    .typewriter {
+        font-size: 1.1rem !important;
+        min-height: 48px !important;
+    }
+}
+
+/* Responsive Navbar icons */
+.navbar-icon {
+    font-size: 88px;
+}
+@media (max-width: 900px) {
+    .navbar-icon {
+        font-size: 56px;
+        margin: 0 16px;
+    }
+}
+@media (max-width: 600px) {
+    .navbar-icon {
+        font-size: 36px;
+        margin: 0 8px;
+    }
+}
+
+/* Responsive Footer */
+footer {
+    font-size: 14px;
+}
+@media (max-width: 600px) {
+    footer {
+        font-size: 11px;
+        padding: 12px 0 8px 0 !important;
+    }
+}
+
+/* Footer toujours centré sur deux lignes */
+.footer-responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px;
+    text-align: center !important;
+}
+@media (max-width: 600px) {
+    .footer-responsive {
+        font-size: 11px;
+        padding: 12px 0 8px 0 !important;
+    }
+}
+
+/* Responsive ThemeSwitch */
+@media (max-width: 600px) {
+    .theme-switch-fixed {
+        top: 12px !important;
+        right: 8px !important;
+        width: 48px !important;
+        height: 28px !important;
+        min-width: 48px !important;
+        min-height: 28px !important;
+    }
+}
+
+/* Responsive MarioIntro container */
+@media (max-width: 600px) {
+    .mario-intro-container {
+        padding: 0 4vw;
+    }
+}
+
+/* Responsive Navbar */
+@media (max-width: 600px) {
+    .navbar-responsive {
+        padding: 0 8vw;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    .navbar-responsive > div:nth-child(2) {
+        gap: 20px !important; /* Réduit l'écart entre les icônes */
     }
 }
