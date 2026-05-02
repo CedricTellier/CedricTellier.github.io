@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "next build && touch out/.nojekyll && npx gh-pages -d out"
+    "deploy": "next build && touch out/.nojekyll && npx gh-pages -d out",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "autoprefixer": "latest",
@@ -18,9 +21,15 @@
     "tailwindcss": "latest"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
     "@types/node": "24.0.4",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "typescript": "latest"
   }
 }
