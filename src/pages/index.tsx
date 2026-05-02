@@ -1,34 +1,50 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import TypeWriter from '../components/Typewriter';
 import { useState } from 'react';
+import Head from 'next/head';
+import { Theme } from '../lib/types';
+import { getTokens } from '../lib/tokens';
+import { ACCENT_DEFAULT_VALUE } from '../lib/tokens';
+import { PROFILE } from '../lib/content';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import MetricsBar from '../components/MetricsBar';
+import ServicesSection from '../components/ServicesSection';
+import SkillsSection from '../components/SkillsSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 
-const Home: React.FC = () => {
-    const [showNavbar, setShowNavbar] = useState(false);
+const accent = ACCENT_DEFAULT_VALUE;
 
-    return (
-        <div
-            className="fixed inset-0 flex flex-col items-center justify-center mario-intro-container"
-            style={{
-                width: '100vw',
-                height: '100vh',
-                borderRadius: 0,
-                zIndex: 50,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '0 32px',
-            }}
-        >
-            {showNavbar && <Navbar show={showNavbar} />}
-            <TypeWriter
-                onNameDone={() => setShowNavbar(true)}
-            />
-            <Footer />
-        </div>
-    );
-};
+export default function Home() {
+  const [theme, setTheme] = useState<Theme>('dark');
+  const tokens = getTokens(theme, accent);
 
-export default Home;
+  return (
+    <>
+      <Head>
+        <title>{PROFILE.name} — {PROFILE.role}</title>
+        <meta name="description" content={PROFILE.pitchShort} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div
+        style={{
+          background: tokens.bg,
+          color: tokens.fg,
+          minHeight: '100vh',
+          fontFamily: "'Inter', system-ui, sans-serif",
+        }}
+      >
+        <Header theme={theme} onThemeChange={setTheme} accent={accent} />
+        <main>
+          <Hero theme={theme} accent={accent} />
+          <MetricsBar theme={theme} accent={accent} />
+          <ServicesSection theme={theme} accent={accent} />
+          <SkillsSection theme={theme} accent={accent} />
+          <ContactSection theme={theme} accent={accent} />
+        </main>
+        <Footer theme={theme} accent={accent} />
+      </div>
+    </>
+  );
+}
