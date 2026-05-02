@@ -33,11 +33,6 @@ const labelStyle = (mono: string, muted: string) => ({
 
 export default function ContactSection({ theme, accent }: ContactSectionProps) {
   const tokens = getTokens(theme, accent);
-  const isDark = theme === 'dark';
-  const bgAlt = isDark ? '#121214' : '#f2f1ec';
-
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
-  const serif = "'Fraunces', Georgia, serif";
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -63,7 +58,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
       <div style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: mono,
+            fontFamily: tokens.fontMono,
             fontSize: 11,
             color: accent,
             letterSpacing: '0.1em',
@@ -79,7 +74,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
         </div>
         <h2
           style={{
-            fontFamily: serif,
+            fontFamily: tokens.fontSerif,
             fontSize: 'clamp(32px, 4vw, 48px)',
             fontWeight: 400,
             letterSpacing: '-0.02em',
@@ -118,7 +113,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
           style={{ display: 'grid', gap: 24 }}
         >
           <div>
-            <label htmlFor="contact-name" style={labelStyle(mono, tokens.muted)}>
+            <label htmlFor="contact-name" style={labelStyle(tokens.fontMono, tokens.muted)}>
               Nom
             </label>
             <input
@@ -128,11 +123,11 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Votre nom"
-              style={inputStyle(tokens.inputBg, tokens.border, tokens.fg, mono)}
+              style={inputStyle(tokens.inputBg, tokens.border, tokens.fg, tokens.fontMono)}
             />
           </div>
           <div>
-            <label htmlFor="contact-email" style={labelStyle(mono, tokens.muted)}>
+            <label htmlFor="contact-email" style={labelStyle(tokens.fontMono, tokens.muted)}>
               Email
             </label>
             <input
@@ -142,11 +137,11 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="votre@email.com"
-              style={inputStyle(tokens.inputBg, tokens.border, tokens.fg, mono)}
+              style={inputStyle(tokens.inputBg, tokens.border, tokens.fg, tokens.fontMono)}
             />
           </div>
           <div>
-            <label htmlFor="contact-message" style={labelStyle(mono, tokens.muted)}>
+            <label htmlFor="contact-message" style={labelStyle(tokens.fontMono, tokens.muted)}>
               Message
             </label>
             <textarea
@@ -157,7 +152,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Dites-moi en quelques mots ce que vous cherchez…"
               style={{
-                ...inputStyle(tokens.inputBg, tokens.border, tokens.fg, mono),
+                ...inputStyle(tokens.inputBg, tokens.border, tokens.fg, tokens.fontMono),
                 resize: 'vertical',
               }}
             />
@@ -171,7 +166,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
                 border: 'none',
                 borderRadius: 8,
                 padding: '14px 28px',
-                fontFamily: mono,
+                fontFamily: tokens.fontMono,
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: '0.06em',
@@ -187,11 +182,11 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
         {/* Terminal sidebar */}
         <aside
           style={{
-            background: bgAlt,
+            background: tokens.bgAlt,
             border: `1px solid ${tokens.border}`,
             borderRadius: 12,
             padding: 32,
-            fontFamily: mono,
+            fontFamily: tokens.fontMono,
             fontSize: 13,
           }}
         >

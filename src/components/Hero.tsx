@@ -25,9 +25,6 @@ export default function Hero({ theme, accent }: HeroProps) {
   const gridColor = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)';
   const borderStrong = isDark ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.20)';
 
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
-  const serif = "'Fraunces', Georgia, serif";
-
   return (
     <section
       style={{
@@ -58,7 +55,7 @@ export default function Hero({ theme, accent }: HeroProps) {
             display: 'flex',
             alignItems: 'center',
             gap: 14,
-            fontFamily: mono,
+            fontFamily: tokens.fontMono,
             fontSize: 12,
             color: tokens.muted,
             marginBottom: 32,
@@ -76,7 +73,7 @@ export default function Hero({ theme, accent }: HeroProps) {
         {/* Heading */}
         <h1
           style={{
-            fontFamily: serif,
+            fontFamily: tokens.fontSerif,
             fontWeight: 400,
             fontSize: 'clamp(56px, 7vw, 92px)',
             lineHeight: 1.02,
@@ -125,7 +122,7 @@ export default function Hero({ theme, accent }: HeroProps) {
               color: tokens.accentFg,
               padding: '14px 24px',
               borderRadius: 8,
-              fontFamily: mono,
+              fontFamily: tokens.fontMono,
               fontSize: 13,
               fontWeight: 600,
               textDecoration: 'none',
@@ -147,7 +144,7 @@ export default function Hero({ theme, accent }: HeroProps) {
               color: tokens.fg,
               padding: '13px 24px',
               borderRadius: 8,
-              fontFamily: mono,
+              fontFamily: tokens.fontMono,
               fontSize: 13,
               fontWeight: 500,
               textDecoration: 'none',

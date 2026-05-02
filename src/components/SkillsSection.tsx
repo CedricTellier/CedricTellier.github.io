@@ -15,17 +15,12 @@ const PILLARS = [
 
 export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
   const tokens = getTokens(theme, accent);
-  const isDark = theme === 'dark';
-  const bgAlt = isDark ? '#121214' : '#f2f1ec';
-
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
-  const serif = "'Fraunces', Georgia, serif";
 
   return (
     <section
       id="skills"
       style={{
-        background: bgAlt,
+        background: tokens.bgAlt,
         borderTop: `1px solid ${tokens.border}`,
         borderBottom: `1px solid ${tokens.border}`,
       }}
@@ -41,7 +36,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
         <div style={{ marginBottom: 64 }}>
           <div
             style={{
-              fontFamily: mono,
+              fontFamily: tokens.fontMono,
               fontSize: 11,
               color: accent,
               letterSpacing: '0.1em',
@@ -57,7 +52,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
           </div>
           <h2
             style={{
-              fontFamily: serif,
+              fontFamily: tokens.fontSerif,
               fontSize: 'clamp(32px, 4vw, 48px)',
               fontWeight: 400,
               letterSpacing: '-0.02em',
@@ -100,7 +95,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
             >
               <div
                 style={{
-                  fontFamily: mono,
+                  fontFamily: tokens.fontMono,
                   fontSize: 11,
                   color: accent,
                   letterSpacing: '0.1em',
@@ -112,7 +107,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
               </div>
               <h3
                 style={{
-                  fontFamily: serif,
+                  fontFamily: tokens.fontSerif,
                   fontSize: 30,
                   margin: '0 0 24px',
                   fontWeight: 500,
@@ -147,7 +142,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
                   >
                     <span
                       style={{
-                        fontFamily: mono,
+                        fontFamily: tokens.fontMono,
                         fontSize: 11,
                         color: tokens.muted,
                         flexShrink: 0,

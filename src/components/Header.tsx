@@ -12,8 +12,6 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
   const tokens = getTokens(theme, accent);
   const isDark = theme === 'dark';
 
-  const bgBlur = isDark ? 'rgba(11,11,12,0.72)' : 'rgba(250,250,247,0.72)';
-
   return (
     <header
       style={{
@@ -22,7 +20,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
         zIndex: 30,
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        background: bgBlur,
+        background: tokens.bgBlur,
         borderBottom: `1px solid ${tokens.border}`,
       }}
     >
@@ -42,7 +40,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
             display: 'flex',
             alignItems: 'center',
             gap: 12,
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+            fontFamily: tokens.fontMono,
             fontSize: 13,
           }}
         >
@@ -76,7 +74,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
             style={{
               display: 'flex',
               gap: 28,
-              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+              fontFamily: tokens.fontMono,
               fontSize: 13,
             }}
           >
@@ -121,7 +119,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
               borderRadius: 6,
               color: tokens.muted,
               cursor: 'pointer',
-              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+              fontFamily: tokens.fontMono,
               fontSize: 12,
               padding: '4px 8px',
               lineHeight: 1,

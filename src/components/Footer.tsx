@@ -8,7 +8,6 @@ interface FooterProps {
 
 export default function Footer({ theme, accent }: FooterProps) {
   const tokens = getTokens(theme, accent);
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
 
   return (
     <footer
@@ -24,7 +23,7 @@ export default function Footer({ theme, accent }: FooterProps) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          fontFamily: mono,
+          fontFamily: tokens.fontMono,
           fontSize: 12,
           color: tokens.muted,
           flexWrap: 'wrap',

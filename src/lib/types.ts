@@ -3,12 +3,16 @@ export type Theme = 'dark' | 'light';
 export interface ThemeTokens {
   bg: string;
   bg2: string;
+  bgAlt: string;
+  bgBlur: string;
   fg: string;
   muted: string;
   border: string;
   accent: string;
   accentFg: string;
   inputBg: string;
+  fontMono: string;
+  fontSerif: string;
 }
 
 export interface Achievement {

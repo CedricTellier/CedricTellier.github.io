@@ -10,9 +10,6 @@ interface ServicesSectionProps {
 export default function ServicesSection({ theme, accent }: ServicesSectionProps) {
   const tokens = getTokens(theme, accent);
 
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
-  const serif = "'Fraunces', Georgia, serif";
-
   return (
     <section
       id="services"
@@ -26,7 +23,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
       <div style={{ marginBottom: 64 }}>
         <div
           style={{
-            fontFamily: mono,
+            fontFamily: tokens.fontMono,
             fontSize: 11,
             color: accent,
             letterSpacing: '0.1em',
@@ -42,7 +39,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
         </div>
         <h2
           style={{
-            fontFamily: serif,
+            fontFamily: tokens.fontSerif,
             fontSize: 'clamp(32px, 4vw, 48px)',
             fontWeight: 400,
             letterSpacing: '-0.02em',
@@ -96,7 +93,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
             >
               <span
                 style={{
-                  fontFamily: mono,
+                  fontFamily: tokens.fontMono,
                   fontSize: 12,
                   color: accent,
                   letterSpacing: '0.08em',
@@ -107,7 +104,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
               <h3
                 style={{
                   margin: 0,
-                  fontFamily: serif,
+                  fontFamily: tokens.fontSerif,
                   fontSize: 26,
                   fontWeight: 500,
                   letterSpacing: '-0.01em',
@@ -140,7 +137,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
                 <li
                   key={j}
                   style={{
-                    fontFamily: mono,
+                    fontFamily: tokens.fontMono,
                     fontSize: 12,
                     color: tokens.fg,
                     display: 'flex',

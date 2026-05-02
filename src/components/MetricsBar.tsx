@@ -9,18 +9,13 @@ interface MetricsBarProps {
 
 export default function MetricsBar({ theme, accent }: MetricsBarProps) {
   const tokens = getTokens(theme, accent);
-  const isDark = theme === 'dark';
-  const bgAlt = isDark ? '#121214' : '#f2f1ec';
-
-  const mono = "'JetBrains Mono', ui-monospace, monospace";
-  const serif = "'Fraunces', Georgia, serif";
 
   return (
     <section
       style={{
         borderTop: `1px solid ${tokens.border}`,
         borderBottom: `1px solid ${tokens.border}`,
-        background: bgAlt,
+        background: tokens.bgAlt,
       }}
     >
       <div
@@ -43,7 +38,7 @@ export default function MetricsBar({ theme, accent }: MetricsBarProps) {
           >
             <div
               style={{
-                fontFamily: serif,
+                fontFamily: tokens.fontSerif,
                 fontSize: 44,
                 fontWeight: 500,
                 lineHeight: 1,
@@ -55,7 +50,7 @@ export default function MetricsBar({ theme, accent }: MetricsBarProps) {
             </div>
             <div
               style={{
-                fontFamily: mono,
+                fontFamily: tokens.fontMono,
                 fontSize: 11,
                 color: tokens.muted,
                 marginTop: 10,
