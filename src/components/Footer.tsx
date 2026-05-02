@@ -1,46 +1,39 @@
-import React from 'react';
+import { getTokens } from '../lib/tokens';
+import { Theme } from '../lib/types';
 
-const Footer: React.FC = () => (
+interface FooterProps {
+  theme: Theme;
+  accent: string;
+}
+
+export default function Footer({ theme, accent }: FooterProps) {
+  const tokens = getTokens(theme, accent);
+  const mono = "'JetBrains Mono', ui-monospace, monospace";
+
+  return (
     <footer
-        className="footer-responsive"
-        style={{
-            width: '100vw',
-            maxWidth: '100vw',
-            padding: '24px 0 16px 0',
-            textAlign: 'center',
-            fontSize: 14,
-            color: 'var(--text-main)',
-            background: 'transparent',
-            position: 'fixed',
-            bottom: 0,
-            zIndex: 20,
-            letterSpacing: 1,
-            userSelect: 'none',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 2,
-        }}
+      style={{
+        borderTop: `1px solid ${tokens.border}`,
+      }}
     >
-        <div>
-            © {new Date().getFullYear()} Cédric Tellier. Tous droits réservés.
-        </div>
-        <div>
-            <a
-                href="https://github.com/cedrictellier/CedricTellier.github.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                    color: 'var(--link)',
-                    textDecoration: 'underline',
-                    transition: 'color 0.2s'
-                }}
-            >
-                Code source sur GitHub
-            </a>
-        </div>
+      <div
+        style={{
+          maxWidth: 1120,
+          margin: '0 auto',
+          padding: '32px 48px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          fontFamily: mono,
+          fontSize: 12,
+          color: tokens.muted,
+          flexWrap: 'wrap',
+          gap: 16,
+        }}
+      >
+        <span>© {new Date().getFullYear()} Cédric Tellier</span>
+        <span>Built with care · Updated 2026</span>
+      </div>
     </footer>
-);
-
-export default Footer;
+  );
+}
