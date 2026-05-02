@@ -1,117 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --bg-main: #f3f4f6;
-    --text-main: #18181b;
-    --icon-color: #18181b;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    background: var(--bg-main);
-    color: var(--text-main);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dark {
-    --bg-main: #18181b;
-    --text-main: #f3f4f6;
-    --icon-color: #fff;
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(113, 113, 122, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-a {
-    color: #2563eb; /* Tailwind text-blue-600 */
-    transition: color 0.2s;
-}
-.dark a {
-    color: #60a5fa; /* Tailwind text-blue-400 */
-    transition: color 0.2s;
-}
-a:hover {
-    color: #1e40af; /* Tailwind text-blue-800 */
-}
-.dark a:hover {
-    color: #bfdbfe; /* Tailwind text-blue-200 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* Style Mario pour le nom */
-.mario-title {
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #000;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté : fallback si le gradient ne s'applique pas */
+.fade-in-up {
+  animation: fadeInUp 0.4s ease both;
 }
 
-.dark .mario-title {
-    text-shadow:
-        2px 2px 0 #fff200,
-        4px 4px 0 #0000ff,
-        6px 6px 0 #fff;
-    background: linear-gradient(90deg, #ff0000 0%, #fff200 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--text-main); /* Ajouté */
+.fade-in {
+  animation: fadeIn 0.3s ease both;
 }
 
-.typewriter {
-    overflow: hidden;
-    border-right: .15em solid #ff0000;
-    white-space: nowrap;
-    animation: typing 2.5s steps(20, end), blink-caret .75s step-end infinite;
+/* Grid background pattern for Hero */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+.grid-bg-light {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #ff0000; }
-}
-
-@keyframes icon-bounce {
-    0% { transform: translateY(-80px) scale(0.5);}
-    60% { transform: translateY(10px) scale(1.15);}
-    80% { transform: translateY(-5px) scale(0.95);}
-    100% { transform: translateY(0) scale(1);}
-}
-.navbar-icon {
-    display: inline-block;
-    transform: scale(1) translateY(0);
-    transition: filter 0.18s transform 0.32s cubic-bezier(.22,1.5,.36,1);
-    will-change: transform, filter;
-}
-.navbar-icon:hover {
-    animation: navbar-mac-dock 0.38s cubic-bezier(.22,1.5,.36,1) forwards;
-    z-index: 101;
-    filter: drop-shadow(0 16px 48px #222b);
-}
-
-@keyframes navbar-mac-dock {
-    0% {
-        transform: scale(1) translateY(0);
-    }
-    60% {
-        transform: scale(1.7) translateY(-22px);
-    }
-    80% {
-        transform: scale(2.8) translateY(-32px);
-    }
-    100% {
-        transform: scale(3) translateY(-30px);
-    }
-}
+/* Utility: font families */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-serif { font-family: 'Fraunces', Georgia, serif; }
+.font-sans { font-family: 'Inter', system-ui, sans-serif; }

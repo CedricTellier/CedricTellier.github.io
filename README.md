@@ -1,71 +1,140 @@
-# Mon Site Statique
+# CedricTellier.github.io
 
-Bienvenue dans le projet **Mon Site Statique**. Ce projet utilise Next.js et Tailwind CSS pour créer un site statique moderne et réactif.
+Personal portfolio site for Cédric Tellier — Engineering Manager.
 
-## Prérequis
+**Live**: [portfolio-cedric-telliers-projects.vercel.app](https://portfolio-cedric-telliers-projects.vercel.app)
 
-Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
+---
 
-- Node.js (version 12 ou supérieure)
-- npm (ou yarn)
+## Stack
 
-## Installation
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js (static export) |
+| Language | TypeScript |
+| Styling | Tailwind CSS + CSS custom properties |
+| Fonts | JetBrains Mono · Inter · Fraunces |
+| Testing | Jest + React Testing Library |
+| Hosting | Vercel (primary) · GitHub Pages (secondary) |
 
-1. Clonez le dépôt :
+---
 
-   ```bash
-   git clone https://github.com/votre-utilisateur/mon-site-statique.git
-   ```
-
-2. Accédez au répertoire du projet :
-
-   ```bash
-   cd mon-site-statique
-   ```
-
-3. Installez les dépendances :
-
-   ```bash
-   npm install
-   ```
-
-   ou
-
-   ```bash
-   yarn install
-   ```
-
-## Démarrage
-
-Pour démarrer le serveur de développement, exécutez :
+## Getting Started
 
 ```bash
-npm run dev
+npm install
+npm run dev       # http://localhost:3000
 ```
 
-ou
+## Build & Deploy
 
 ```bash
-yarn dev
+npm run build     # static export → /out
+npm run deploy    # build + push to GitHub Pages via gh-pages
 ```
 
-Votre application sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
+Vercel auto-deploys on push to **master**.
 
-## Structure du projet
+---
 
-- **public/** : Contient les fichiers statiques, y compris l'icône du site.
-- **src/pages/** : Contient les pages de l'application, y compris la page d'accueil.
-- **src/components/** : Contient les composants réutilisables, comme la barre de navigation.
-- **src/styles/** : Contient les fichiers de styles globaux.
-- **tailwind.config.js** : Configuration de Tailwind CSS.
-- **postcss.config.js** : Configuration pour PostCSS.
-- **package.json** : Liste des dépendances et scripts du projet.
-- **tsconfig.json** : Configuration TypeScript.
+## Testing
 
-## Contribuer
+```bash
+npm test                  # run all tests
+npm run test:watch        # watch mode
+npm run test:coverage     # with coverage report
+```
 
-Les contributions sont les bienvenues ! N'hésitez pas à soumettre des demandes de tirage ou à signaler des problèmes.
+Tests are colocated with their components: `Header.test.tsx` lives next to `Header.tsx`.
 
-## License
+---
 
-Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus de détails.
+## Project Structure
+
+```
+src/
+├── pages/index.tsx          ← App root, theme state, page assembly
+├── components/              ← One file + one test file per component
+│   ├── Header.tsx / .test.tsx
+│   ├── Hero.tsx / .test.tsx
+│   ├── MetricsBar.tsx / .test.tsx
+│   ├── ServicesSection.tsx / .test.tsx
+│   ├── SkillsSection.tsx / .test.tsx
+│   ├── ContactSection.tsx / .test.tsx
+│   └── Footer.tsx / .test.tsx
+├── lib/
+│   ├── content.ts           ← All site text content (typed)
+│   ├── tokens.ts            ← Design tokens for dark/light themes
+│   └── types.ts             ← Shared TypeScript interfaces
+└── styles/globals.css       ← Base reset, CSS custom properties, keyframes
+
+public/
+├── cv.pdf                   ← Downloadable CV
+├── photo.jpg                ← Profile photo
+└── favicon.ico
+
+docs/
+├── architecture/
+│   ├── adr/001-portfolio-redesign.md   ← Design decision record
+│   └── diagrams/site-architecture.md  ← Mermaid component + data flow
+└── design/
+    └── screens/portfolio-sections.md  ← Section wireframes
+```
+
+---
+
+## Architecture
+
+The site is a single-page portfolio with seven sections:
+
+1. **Header** — sticky nav, theme toggle (dark/light)
+2. **Hero** — headline, pitch, CTA buttons (contact + CV download)
+3. **MetricsBar** — 4 key achievements (18+ years, ISO 8583, 10 people, 80M+ transactions)
+4. **Services** — 4 service cards (management, delivery, architecture, audit)
+5. **Skills** — 3 pillars of expertise with tagged skills
+6. **Contact** — mailto form + terminal sidebar with contact info
+7. **Footer** — copyright + GitHub source link
+
+All content lives in `src/lib/content.ts`. Theme tokens (colors, backgrounds) live in `src/lib/tokens.ts`. Components receive `theme: 'dark' | 'light'` as a prop and look up the appropriate token set.
+
+See `docs/architecture/` for detailed diagrams and `docs/design/` for wireframes.
+
+---
+
+## Theme System
+
+Themes are driven by CSS custom properties injected per component via `src/lib/tokens.ts`. Dark mode is the default. The Header exposes a toggle button that flips the theme state in `pages/index.tsx`, which then flows down as a prop to all sections.
+
+---
+
+## Branching & Releases
+
+| Branch | Purpose |
+|--------|---------|
+| `master` | Production — auto-deploys to Vercel |
+| `develop` | Integration — all features merge here |
+| `feat/*` | Feature branches, PR → develop |
+| `fix/*` | Bug fixes, PR → develop |
+| `release/*` | Release prep, PR → master |
+
+All commits follow [Conventional Commits](https://www.conventionalcommits.org/).
+
+---
+
+## CI
+
+GitHub Actions runs on every push:
+
+- **Typecheck** — `tsc --noEmit`
+- **Build** — `next build` (verifies static export succeeds)
+- **Test** — `jest --coverage`
+
+A PR may not be merged while CI is red.
+
+---
+
+## Content Updates
+
+To update job history, skills, or contact info, edit `src/lib/content.ts`. No component changes are needed for content-only updates.
+
+To update the CV, replace `public/cv.pdf`.
