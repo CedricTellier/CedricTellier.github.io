@@ -1,192 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --bg-main: #18181b;
-    --text-main: #f3f4f6;
-    --icon-color: #fff;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Press Start 2P', cursive, sans-serif;
-    background: var(--bg-main);
-    color: var(--text-main);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dark {
-    --bg-main: #18181b;
-    --text-main: #f3f4f6;
-    --icon-color: #fff;
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(113, 113, 122, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-a {
-    color: #2563eb; /* Tailwind text-blue-600 */
-    transition: color 0.2s;
-}
-.dark a {
-    color: #60a5fa; /* Tailwind text-blue-400 */
-    transition: color 0.2s;
-}
-a:hover {
-    color: #1e40af; /* Tailwind text-blue-800 */
-}
-.dark a:hover {
-    color: #bfdbfe; /* Tailwind text-blue-200 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.typewriter {
-    overflow: hidden;
-    border-right: .15em solid #ff0000;
-    white-space: nowrap;
-    animation: typing 2.5s steps(20, end), blink-caret .75s step-end infinite;
+.fade-in-up {
+  animation: fadeInUp 0.4s ease both;
 }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+.fade-in {
+  animation: fadeIn 0.3s ease both;
 }
 
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #ff0000; }
+/* Grid background pattern for Hero */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes icon-bounce {
-    0% { transform: translateY(-80px) scale(0.5);}
-    60% { transform: translateY(10px) scale(1.15);}
-    80% { transform: translateY(-5px) scale(0.95);}
-    100% { transform: translateY(0) scale(1);}
-}
-.navbar-icon {
-    display: inline-block;
-    transform: scale(1) translateY(0);
-    transition: filter 0.18s transform 0.32s cubic-bezier(.22,1.5,.36,1);
-    will-change: transform, filter;
-    font-size: 88px;
-}
-.navbar-icon:hover {
-    animation: navbar-mac-dock 0.38s cubic-bezier(.22,1.5,.36,1) forwards;
-    z-index: 101;
-    filter: drop-shadow(0 16px 48px #222b);
+.grid-bg-light {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes navbar-mac-dock {
-    0% {
-        transform: scale(1) translateY(0);
-    }
-    60% {
-        transform: scale(1.7) translateY(-22px);
-    }
-    80% {
-        transform: scale(2.8) translateY(-32px);
-    }
-    100% {
-        transform: scale(3) translateY(-30px);
-    }
-}
-
-/* Responsive Mario Title & Typewriter */
-.mario-title {
-    font-size: 2.5rem;
-}
-@media (max-width: 900px) {
-    .mario-title {
-        font-size: 1.7rem;
-    }
-}
-@media (max-width: 600px) {
-    .mario-title {
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-    }
-}
-.typewriter {
-    white-space: nowrap;
-}
-@media (max-width: 600px) {
-    .typewriter {
-        font-size: 1.1rem !important;
-        min-height: 48px !important;
-    }
-}
-
-/* Responsive Navbar icons */
-.navbar-icon {
-    font-size: 88px;
-}
-@media (max-width: 900px) {
-    .navbar-icon {
-        font-size: 56px;
-        margin: 0 16px;
-    }
-}
-@media (max-width: 600px) {
-    .navbar-icon {
-        font-size: 36px;
-        margin: 0 8px;
-    }
-}
-
-/* Responsive Footer */
-footer {
-    font-size: 14px;
-}
-@media (max-width: 600px) {
-    footer {
-        font-size: 11px;
-        padding: 12px 0 8px 0 !important;
-    }
-}
-
-/* Footer toujours centré sur deux lignes */
-.footer-responsive {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 2px;
-    text-align: center !important;
-}
-@media (max-width: 600px) {
-    .footer-responsive {
-        font-size: 11px;
-        padding: 12px 0 8px 0 !important;
-    }
-}
-
-/* Responsive ThemeSwitch */
-@media (max-width: 600px) {
-    .theme-switch-fixed {
-        top: 12px !important;
-        right: 8px !important;
-        width: 48px !important;
-        height: 28px !important;
-        min-width: 48px !important;
-        min-height: 28px !important;
-    }
-}
-
-/* Responsive MarioIntro container */
-@media (max-width: 600px) {
-    .mario-intro-container {
-        padding: 0 4vw;
-    }
-}
-
-/* Responsive Navbar */
-@media (max-width: 600px) {
-    .navbar-responsive {
-        padding: 0 8vw;
-        width: 100vw;
-        box-sizing: border-box;
-    }
-    .navbar-responsive > div:nth-child(2) {
-        gap: 20px !important; /* Réduit l'écart entre les icônes */
-    }
-}
+/* Utility: font families */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-serif { font-family: 'Fraunces', Georgia, serif; }
+.font-sans { font-family: 'Inter', system-ui, sans-serif; }
