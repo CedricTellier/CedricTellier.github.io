@@ -33,13 +33,13 @@ export default function Home() {
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="canonical" href="https://portfolio-cedric-telliers-projects.vercel.app" />
+        <link rel="canonical" href="https://cedrictellier.com" />
         <link rel="me" href="https://www.linkedin.com/in/c%C3%A9dric-tellier-913224101" />
         <link rel="me" href="https://github.com/cedrictellier" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://portfolio-cedric-telliers-projects.vercel.app" />
+        <meta property="og:url" content="https://cedrictellier.com" />
         <meta property="og:site_name" content="Cédric Tellier — Engineering Manager" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:title" content="Cédric Tellier — Engineering Manager Freelance | Audit & Management de Transition" />
@@ -60,7 +60,7 @@ export default function Home() {
                 '@type': 'Person',
                 name: 'Cédric Tellier',
                 jobTitle: 'Engineering Manager',
-                url: 'https://portfolio-cedric-telliers-projects.vercel.app',
+                url: 'https://cedrictellier.com',
                 email: 'cedric.tellier25@gmail.com',
                 address: {
                   '@type': 'PostalAddress',
@@ -89,7 +89,7 @@ export default function Home() {
                 '@context': 'https://schema.org',
                 '@type': 'WebSite',
                 name: 'Cédric Tellier — Engineering Manager',
-                url: 'https://portfolio-cedric-telliers-projects.vercel.app',
+                url: 'https://cedrictellier.com',
                 description: 'Portfolio de Cédric Tellier, Engineering Manager freelance en France. Expert ISO 8583, EMV et paiement bancaire. Disponible pour audit informatique, management de transition et pilotage d\'équipes tech.',
               },
             ]),
