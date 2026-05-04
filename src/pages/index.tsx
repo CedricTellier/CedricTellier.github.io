@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Theme } from '../lib/types';
 import { getTokens } from '../lib/tokens';
@@ -17,6 +17,11 @@ const accent = ACCENT_DEFAULT_VALUE;
 export default function Home() {
   const [theme, setTheme] = useState<Theme>('dark');
   const tokens = getTokens(theme, accent);
+
+  useEffect(() => {
+    document.body.style.background = tokens.bg;
+    document.documentElement.style.background = tokens.bg;
+  }, [tokens.bg]);
 
   return (
     <>

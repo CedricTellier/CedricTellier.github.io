@@ -1,6 +1,7 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { ACHIEVEMENTS } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface MetricsBarProps {
   theme: Theme;
@@ -9,6 +10,7 @@ interface MetricsBarProps {
 
 export default function MetricsBar({ theme, accent }: MetricsBarProps) {
   const tokens = getTokens(theme, accent);
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -22,24 +24,28 @@ export default function MetricsBar({ theme, accent }: MetricsBarProps) {
         style={{
           maxWidth: 1120,
           margin: '0 auto',
-          padding: '40px 48px',
+          padding: isMobile ? '32px 20px' : '40px 48px',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 32,
+          gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+          gap: isMobile ? 24 : 32,
         }}
       >
         {ACHIEVEMENTS.map((a, i) => (
           <div
             key={i}
             style={{
-              borderLeft: i > 0 ? `1px solid ${tokens.border}` : 'none',
-              paddingLeft: i > 0 ? 32 : 0,
+              borderLeft: isMobile
+                ? (i % 2 === 1 ? `1px solid ${tokens.border}` : 'none')
+                : (i > 0 ? `1px solid ${tokens.border}` : 'none'),
+              paddingLeft: isMobile
+                ? (i % 2 === 1 ? 20 : 0)
+                : (i > 0 ? 32 : 0),
             }}
           >
             <div
               style={{
                 fontFamily: tokens.fontSerif,
-                fontSize: 44,
+                fontSize: isMobile ? 36 : 44,
                 fontWeight: 500,
                 lineHeight: 1,
                 letterSpacing: '-0.02em',
