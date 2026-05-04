@@ -32,7 +32,8 @@ export default function Home() {
         <meta name="author" content="Cédric Tellier" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href="https://www.cedrictellier.com" />
         <link rel="me" href="https://www.linkedin.com/in/c%C3%A9dric-tellier-913224101" />
         <link rel="me" href="https://github.com/cedrictellier" />
