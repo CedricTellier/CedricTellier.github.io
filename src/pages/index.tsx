@@ -20,6 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     document.body.style.background = tokens.bg;
+    document.documentElement.style.background = tokens.bg;
   }, [tokens.bg]);
 
   return (

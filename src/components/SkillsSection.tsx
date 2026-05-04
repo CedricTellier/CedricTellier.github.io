@@ -1,6 +1,7 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { SKILLS } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface SkillsSectionProps {
   theme: Theme;
@@ -15,6 +16,7 @@ const PILLARS = [
 
 export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
   const tokens = getTokens(theme, accent);
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -29,7 +31,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
         style={{
           maxWidth: 1120,
           margin: '0 auto',
-          padding: '120px 48px',
+          padding: isMobile ? '72px 20px' : '120px 48px',
         }}
       >
         {/* Section header */}
@@ -79,8 +81,8 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 32,
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: isMobile ? 16 : 32,
           }}
         >
           {PILLARS.map((pillar, i) => (

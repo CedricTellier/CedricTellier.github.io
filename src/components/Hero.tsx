@@ -1,6 +1,7 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { PROFILE } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface HeroProps {
   theme: Theme;
@@ -22,6 +23,7 @@ const iconBtnStyle = (borderColor: string, color: string) => ({
 export default function Hero({ theme, accent }: HeroProps) {
   const tokens = getTokens(theme, accent);
   const isDark = theme === 'dark';
+  const isMobile = useIsMobile();
   const gridColor = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)';
   const borderStrong = isDark ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.20)';
 
@@ -30,7 +32,7 @@ export default function Hero({ theme, accent }: HeroProps) {
       style={{
         maxWidth: 1120,
         margin: '0 auto',
-        padding: '120px 48px 96px',
+        padding: isMobile ? '72px 20px 56px' : '120px 48px 96px',
         position: 'relative',
       }}
     >
@@ -54,9 +56,10 @@ export default function Hero({ theme, accent }: HeroProps) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 14,
+            flexWrap: 'wrap',
+            gap: isMobile ? 8 : 14,
             fontFamily: tokens.fontMono,
-            fontSize: 12,
+            fontSize: isMobile ? 11 : 12,
             color: tokens.muted,
             marginBottom: 32,
             letterSpacing: '0.04em',
@@ -64,10 +67,10 @@ export default function Hero({ theme, accent }: HeroProps) {
         >
           <span style={{ color: accent }}>●</span>
           <span>{PROFILE.status.toUpperCase()}</span>
-          <span>·</span>
-          <span>{PROFILE.location}</span>
-          <span>·</span>
-          <span>EST. 2021</span>
+          {!isMobile && <span>·</span>}
+          {!isMobile && <span>{PROFILE.location}</span>}
+          {!isMobile && <span>·</span>}
+          {!isMobile && <span>EST. 2021</span>}
         </div>
 
         {/* Heading */}
@@ -95,7 +98,7 @@ export default function Hero({ theme, accent }: HeroProps) {
         {/* Pitch */}
         <p
           style={{
-            fontSize: 20,
+            fontSize: isMobile ? 16 : 20,
             lineHeight: 1.55,
             maxWidth: 640,
             color: tokens.fg,

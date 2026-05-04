@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { PROFILE } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface ContactSectionProps {
   theme: Theme;
@@ -33,6 +34,7 @@ const labelStyle = (mono: string, muted: string) => ({
 
 export default function ContactSection({ theme, accent }: ContactSectionProps) {
   const tokens = getTokens(theme, accent);
+  const isMobile = useIsMobile();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -51,7 +53,7 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
       style={{
         maxWidth: 1120,
         margin: '0 auto',
-        padding: '120px 48px 100px',
+        padding: isMobile ? '72px 20px 64px' : '120px 48px 100px',
       }}
     >
       {/* Section header */}
@@ -101,8 +103,8 @@ export default function ContactSection({ theme, accent }: ContactSectionProps) {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1.4fr 1fr',
-          gap: 72,
+          gridTemplateColumns: isMobile ? '1fr' : '1.4fr 1fr',
+          gap: isMobile ? 40 : 72,
           alignItems: 'start',
         }}
       >

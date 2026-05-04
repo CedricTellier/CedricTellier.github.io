@@ -1,5 +1,6 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface FooterProps {
   theme: Theme;
@@ -8,6 +9,7 @@ interface FooterProps {
 
 export default function Footer({ theme, accent }: FooterProps) {
   const tokens = getTokens(theme, accent);
+  const isMobile = useIsMobile();
 
   return (
     <footer
@@ -19,7 +21,7 @@ export default function Footer({ theme, accent }: FooterProps) {
         style={{
           maxWidth: 1120,
           margin: '0 auto',
-          padding: '32px 48px',
+          padding: isMobile ? '24px 20px' : '32px 48px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',

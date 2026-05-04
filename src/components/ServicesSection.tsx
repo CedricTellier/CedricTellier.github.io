@@ -1,6 +1,7 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { SERVICES } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface ServicesSectionProps {
   theme: Theme;
@@ -9,6 +10,7 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ theme, accent }: ServicesSectionProps) {
   const tokens = getTokens(theme, accent);
+  const isMobile = useIsMobile();
 
   return (
     <section
@@ -16,7 +18,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
       style={{
         maxWidth: 1120,
         margin: '0 auto',
-        padding: '120px 48px 80px',
+        padding: isMobile ? '72px 20px 56px' : '120px 48px 80px',
       }}
     >
       {/* Section header */}
@@ -66,7 +68,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
           gap: 1,
           background: tokens.border,
           border: `1px solid ${tokens.border}`,

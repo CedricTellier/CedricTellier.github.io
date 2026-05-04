@@ -1,6 +1,7 @@
 import { getTokens } from '../lib/tokens';
 import { Theme } from '../lib/types';
 import { PROFILE } from '../lib/content';
+import { useIsMobile } from '../hooks/useBreakpoint';
 
 interface HeaderProps {
   theme: Theme;
@@ -11,6 +12,7 @@ interface HeaderProps {
 export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
   const tokens = getTokens(theme, accent);
   const isDark = theme === 'dark';
+  const isMobile = useIsMobile();
 
   return (
     <header
@@ -28,7 +30,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
         style={{
           maxWidth: 1120,
           margin: '0 auto',
-          padding: '18px 48px',
+          padding: isMobile ? '14px 20px' : '18px 48px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -39,9 +41,11 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 12,
+            gap: 10,
             fontFamily: tokens.fontMono,
-            fontSize: 13,
+            fontSize: isMobile ? 11 : 13,
+            minWidth: 0,
+            overflow: 'hidden',
           }}
         >
           <span
@@ -56,7 +60,9 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
               flexShrink: 0,
             }}
           />
-          <span style={{ color: tokens.muted }}>cedric@tellier:~$</span>
+          {!isMobile && (
+            <span style={{ color: tokens.muted }}>cedric@tellier:~$</span>
+          )}
           <span style={{ color: tokens.fg, fontWeight: 500 }}>./about</span>
           <span
             style={{
@@ -69,46 +75,50 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
         </div>
 
         {/* Nav + theme toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-          <nav
-            style={{
-              display: 'flex',
-              gap: 28,
-              fontFamily: tokens.fontMono,
-              fontSize: 13,
-            }}
-          >
-            <a
-              href="#services"
-              style={{ color: tokens.muted, textDecoration: 'none' }}
+        <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 12 : 28, flexShrink: 0 }}>
+          {!isMobile && (
+            <nav
+              style={{
+                display: 'flex',
+                gap: 28,
+                fontFamily: tokens.fontMono,
+                fontSize: 13,
+              }}
             >
-              services
-            </a>
-            <a
-              href="#skills"
-              style={{ color: tokens.muted, textDecoration: 'none' }}
-            >
-              compétences
-            </a>
+              <a href="#services" style={{ color: tokens.muted, textDecoration: 'none' }}>
+                services
+              </a>
+              <a href="#skills" style={{ color: tokens.muted, textDecoration: 'none' }}>
+                compétences
+              </a>
+              <a href="#contact" style={{ color: tokens.muted, textDecoration: 'none' }}>
+                contact
+              </a>
+              <a
+                href={PROFILE.cv}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: accent, textDecoration: 'none', fontWeight: 500 }}
+              >
+                CV ↓
+              </a>
+            </nav>
+          )}
+
+          {isMobile && (
             <a
               href="#contact"
-              style={{ color: tokens.muted, textDecoration: 'none' }}
-            >
-              contact
-            </a>
-            <a
-              href={PROFILE.cv}
-              target="_blank"
-              rel="noopener noreferrer"
               style={{
                 color: accent,
                 textDecoration: 'none',
+                fontFamily: tokens.fontMono,
+                fontSize: 11,
                 fontWeight: 500,
               }}
             >
-              CV ↓
+              Contact
             </a>
-          </nav>
+          )}
 
           <button
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
@@ -123,6 +133,7 @@ export default function Header({ theme, onThemeChange, accent }: HeaderProps) {
               fontSize: 12,
               padding: '4px 8px',
               lineHeight: 1,
+              flexShrink: 0,
             }}
           >
             {isDark ? '☀' : '◑'}
