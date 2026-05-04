@@ -62,7 +62,7 @@ export default function SkillsSection({ theme, accent }: SkillsSectionProps) {
               color: tokens.fg,
             }}
           >
-            Le terrain de jeu
+          Expertise Engineering Manager
           </h2>
           <p
             style={{

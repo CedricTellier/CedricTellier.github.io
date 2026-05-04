@@ -49,7 +49,7 @@ export default function ServicesSection({ theme, accent }: ServicesSectionProps)
             color: tokens.fg,
           }}
         >
-          Comment je peux intervenir
+          Missions freelance & management de transition
         </h2>
         <p
           style={{
